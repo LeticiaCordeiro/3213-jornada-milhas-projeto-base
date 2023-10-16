@@ -8,10 +8,10 @@ export class FormularioService {
 
   cadastroForm: FormGroup | null = null
 
-  getCadastro(): FormGroup | null{
+  getProfileDataUserLogged(): FormGroup | null{
     return this.cadastroForm
   }
-  setCadastro(form: FormGroup){
+  setProfileDataUserLogged(form: FormGroup){
     this.cadastroForm = form;
   }
 }

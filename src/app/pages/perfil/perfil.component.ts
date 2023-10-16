@@ -40,7 +40,7 @@ export class PerfilComponent implements OnInit{
   }
 
   carregarFormulario() {
-    this.form = this.formularioService.getCadastro();
+    this.form = this.formularioService.getProfileDataUserLogged();
     this.form?.patchValue({
       nome: this.cadastro.nome,
       nascimento: this.cadastro.nascimento,

@@ -19,7 +19,7 @@ export class CadastroComponent {
   ){}
 
   register(){
-    const formCadastro = this.FormularioService.getCadastro();
+    const formCadastro = this.FormularioService.getProfileDataUserLogged();
 
     if(formCadastro?.valid){
       const novoCadastro = formCadastro.getRawValue() as PessoaUsuaria;

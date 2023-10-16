@@ -48,7 +48,7 @@ export class FormBaseComponent implements OnInit {
     }
 
     this.cadastroForm.get('aceitarTermos')?.updateValueAndValidity();
-    this.FormularioService.setCadastro(this.cadastroForm)
+    this.FormularioService.setProfileDataUserLogged(this.cadastroForm)
 
   }
   executarAcao(){
