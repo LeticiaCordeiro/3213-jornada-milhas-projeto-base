@@ -18,12 +18,12 @@ export class CadastroComponent {
     private router: Router
   ){}
 
-  cadastrar(){
+  register(){
     const formCadastro = this.FormularioService.getCadastro();
 
     if(formCadastro?.valid){
       const novoCadastro = formCadastro.getRawValue() as PessoaUsuaria;
-      this.CadastroService.cadastrar(novoCadastro).subscribe({
+      this.CadastroService.register(novoCadastro).subscribe({
         next: (value) =>{
           console.log(value);
           this.router.navigate(['/login'])
