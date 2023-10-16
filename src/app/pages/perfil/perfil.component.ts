@@ -5,7 +5,7 @@ import { CadastroService } from 'src/app/core/services/cadastro.service';
 import { FormularioService } from 'src/app/core/services/formulario.service';
 import { TokenService } from 'src/app/core/services/token.service';
 import { UserService } from 'src/app/core/services/user.service';
-import { PessoaUsuaria } from 'src/app/core/types/type';
+import { User } from 'src/app/core/types/type';
 
 @Component({
   selector: 'app-perfil',
@@ -17,7 +17,7 @@ export class PerfilComponent implements OnInit{
   textoBotao = 'ATUALIZAR';
   perfilComponent = true;
 
-  cadastro!: PessoaUsuaria;
+  cadastro!: User;
   token: string = '';
   nome: string = '';
   form!: FormGroup<any> | null;

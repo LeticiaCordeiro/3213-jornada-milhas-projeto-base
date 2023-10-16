@@ -7,7 +7,7 @@
     <div class="links-toolbar">
       <button mat-button>Vender milhas</button>
       <button mat-button>Sobre</button>
-      <ng-container *ngIf="user$ | async as pessoaUsuaria; else login">
+      <ng-container *ngIf="user$ | async as user; else login">
         <a routerLink="/perfil">
           <img src="assets/icones/user.png" alt="Ícone da pessoa usuária">
         </a>

@@ -18,7 +18,7 @@ export interface Depoimento {
     avatar: string;
 }
 
-export interface PessoaUsuaria {
+export interface User {
   nome: string,
   nascimento: string,
   cpf: string,
