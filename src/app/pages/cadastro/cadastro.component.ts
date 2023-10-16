@@ -13,17 +13,17 @@ export class CadastroComponent {
   perfilComponent = false;
 
   constructor(
-    private FormularioService: FormularioService,
-    private CadastroService: CadastroService,
+    private formRegisterService: FormularioService,
+    private RegisterService: CadastroService,
     private router: Router
   ){}
 
   register(){
-    const formCadastro = this.FormularioService.getProfileDataUserLogged();
+    const formRegister = this.formRegisterService.getProfileDataUserLogged();
 
-    if(formCadastro?.valid){
-      const novoCadastro = formCadastro.getRawValue() as User;
-      this.CadastroService.register(novoCadastro).subscribe({
+    if(formRegister?.valid){
+      const newRegister = formRegister.getRawValue() as User;
+      this.RegisterService.register(newRegister).subscribe({
         next: (value) =>{
           console.log(value);
           this.router.navigate(['/login'])
