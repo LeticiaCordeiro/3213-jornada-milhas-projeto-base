@@ -14,8 +14,8 @@ export class AutenticacaoInterceptor implements HttpInterceptor {
   constructor(private tokenService: TokenService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    if(this.tokenService.possuiToken()) {
-      const token = this.tokenService.retornarToken();
+    if(this.tokenService.userHasToken ()) {
+      const token = this.tokenService.getToken();
       request = request.clone({
         setHeaders: {
           'Authorization': `Bearer ${token}`

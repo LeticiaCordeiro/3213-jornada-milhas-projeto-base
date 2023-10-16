@@ -12,13 +12,13 @@ export class UserService {
   private userSubject = new BehaviorSubject<PessoaUsuaria | null>(null);
 
   constructor(private tokenService: TokenService) {
-    if(this.tokenService.possuiToken()) {
+    if(this.tokenService.userHasToken ()) {
       this.decodificarJWT();
     }
   }
 
   private decodificarJWT() {
-    const token = this.tokenService.retornarToken();
+    const token = this.tokenService.getToken();
     const user = jwt_decode(token) as PessoaUsuaria;
     this.userSubject.next(user);
   }
@@ -27,17 +27,17 @@ export class UserService {
     return this.userSubject.asObservable();
   }
 
-  salvarToken(token: string) {
-    this.tokenService.salvarToken(token);
+  saveToken(token: string) {
+    this.tokenService.saveToken(token);
     this.decodificarJWT();
   }
 
   logout() {
-    this.tokenService.excluirToken();
+    this.tokenService.removeToken();
     this.userSubject.next(null);
   }
 
   estaLogado() {
-    return this.tokenService.possuiToken();
+    return this.tokenService.userHasToken ();
   }
 }

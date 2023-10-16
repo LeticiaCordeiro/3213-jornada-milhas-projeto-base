@@ -31,7 +31,7 @@ export class PerfilComponent implements OnInit{
   ) { }
 
   ngOnInit() {
-    this.token = this.tokenService.retornarToken();
+    this.token = this.tokenService.getToken();
     this.cadastroService.searchRegister().subscribe(cadastro => {
       this.cadastro = cadastro;
       this.nome = cadastro.nome;
