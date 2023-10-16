@@ -2,14 +2,14 @@
   <mat-card>
     <form [formGroup]="cadastroForm">
       <mat-card-title>
-       {{titulo}}
+       {{title}}
       </mat-card-title>
       <section>
-        <div class="acoesPerfil" *ngIf="perfilComponent">
+        <div class="acoesPerfil" *ngIf="profileComponent">
           <h2>
             Dados pessoais
           </h2>
-          <button (click)="deslogar()" mat-stroked-button color="primary">
+          <button (click)="logout()" mat-stroked-button color="primary">
             <mat-icon >logout</mat-icon>
             DESLOGAR
           </button>
@@ -70,8 +70,8 @@
           </div>
         </div>
       </mat-card-content>
-      <mat-divider *ngIf="perfilComponent"></mat-divider>
-      <div class="acessoPerfil" *ngIf="perfilComponent">
+      <mat-divider *ngIf="profileComponent"></mat-divider>
+      <div class="acessoPerfil" *ngIf="profileComponent">
         <h2>Dados de acesso</h2>
       </div>
       <mat-card-content>
@@ -106,18 +106,18 @@
             </mat-form-field>
           </div>
         </div>
-        <mat-checkbox *ngIf="!perfilComponent" formControlName="aceitarTermos" color="primary" class="full-width">Li e aceito os termos e condições deste cadastro *</mat-checkbox>
+        <mat-checkbox *ngIf="!profileComponent" formControlName="aceitarTermos" color="primary" class="full-width">Li e aceito os termos e condições deste cadastro *</mat-checkbox>
         <mat-error *ngIf="cadastroForm.get('aceitarTermos')?.invalid && cadastroForm.get('aceitarTermos')?.dirty">
           Você precisa aceitar os termos e condições para efetuar o cadastro
         </mat-error>
       </mat-card-content>
       <mat-card-actions class="full-width">
         <button  mat-flat-button
-          [class.perfil-button]="perfilComponent"
+          [class.perfil-button]="profileComponent"
           [disabled]="cadastroForm.invalid"
           color="primary"
           (click)="executarAcao()"
-        >{{textoBotao}}
+        >{{btnText}}
         </button>
       </mat-card-actions>
     </form>

@@ -10,11 +10,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./cadastro.component.scss']
 })
 export class CadastroComponent {
-  perfilComponent = false;
+  profileComponent = false;
 
   constructor(
     private formRegisterService: FormularioService,
-    private RegisterService: CadastroService,
+    private registerService: CadastroService,
     private router: Router
   ){}
 
@@ -23,7 +23,7 @@ export class CadastroComponent {
 
     if(formRegister?.valid){
       const newRegister = formRegister.getRawValue() as User;
-      this.RegisterService.register(newRegister).subscribe({
+      this.registerService.register(newRegister).subscribe({
         next: (value) =>{
           console.log(value);
           this.router.navigate(['/login'])

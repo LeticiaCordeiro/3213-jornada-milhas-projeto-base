@@ -13,9 +13,9 @@ export class FormBaseComponent implements OnInit {
   cadastroForm!: FormGroup;
   estadoControl = new FormControl<UnidadeFederativa | null>(null, Validators.required);
 
-  @Input() titulo: string = 'Crie sua conta';
-  @Input() textoBotao: string = 'CADASTRAR';
-  @Input() perfilComponent: boolean = false;
+  @Input() title: string = 'Crie sua conta';
+  @Input() btnText: string = 'CADASTRAR';
+  @Input() profileComponent: boolean = false;
   @Output() acaoClique: EventEmitter<any> = new EventEmitter<any>()
   @Output() sair: EventEmitter<any> = new EventEmitter<any>()
 
@@ -40,7 +40,7 @@ export class FormBaseComponent implements OnInit {
       estado: this.estadoControl,
     });
 
-    if(this.perfilComponent){
+    if(this.profileComponent){
       this.cadastroForm.get('aceitarTermos')?.setValidators(null)
     }
     else{
@@ -55,7 +55,7 @@ export class FormBaseComponent implements OnInit {
     this.acaoClique.emit();
   }
 
-  deslogar(){
+  logout(){
     this.sair.emit();
   }
 }

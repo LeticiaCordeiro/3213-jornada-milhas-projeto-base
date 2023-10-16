@@ -12,10 +12,11 @@ import { User } from 'src/app/core/types/type';
   templateUrl: './perfil.component.html',
   styleUrls: ['./perfil.component.scss']
 })
+
 export class PerfilComponent implements OnInit{
-  titulo = 'Olá, ';
-  textoBotao = 'ATUALIZAR';
-  perfilComponent = true;
+  title = 'Olá, ';
+  btnText = 'ATUALIZAR';
+  profileComponent = true;
 
   cadastro!: User;
   token: string = '';
@@ -23,24 +24,24 @@ export class PerfilComponent implements OnInit{
   form!: FormGroup<any> | null;
 
   constructor(
-    private cadastroService: CadastroService,
+    private registerService: CadastroService,
     private tokenService: TokenService,
-    private formularioService: FormularioService,
+    private formProfileService: FormularioService,
     private userService: UserService,
     private router: Router
   ) { }
 
   ngOnInit() {
     this.token = this.tokenService.getToken();
-    this.cadastroService.searchRegister().subscribe(cadastro => {
+    this.registerService.searchRegister().subscribe(cadastro => {
       this.cadastro = cadastro;
       this.nome = cadastro.nome;
-      this.carregarFormulario();
+      this.retrieveDataProfileForm();
     })
   }
 
-  carregarFormulario() {
-    this.form = this.formularioService.getProfileDataUserLogged();
+  retrieveDataProfileForm() {
+    this.form = this.formProfileService.getProfileDataUserLogged();
     this.form?.patchValue({
       nome: this.cadastro.nome,
       nascimento: this.cadastro.nascimento,
@@ -54,8 +55,8 @@ export class PerfilComponent implements OnInit{
     });
   }
 
-  atualizar() {
-    const dadosAtualizados = {
+  updateUserProfileData() {
+    const refreshedData = {
       nome: this.form?.value.nome,
       nascimento: this.form?.value.nascimento,
       cpf: this.form?.value.cpf,
@@ -67,7 +68,7 @@ export class PerfilComponent implements OnInit{
       estado: this.form?.value.estado
     }
 
-    this.cadastroService.editRegister(dadosAtualizados).subscribe({
+    this.registerService.editRegister(refreshedData).subscribe({
       next: () => {
         alert('Cadastro editado com sucesso')
         this.router.navigate(['/']);
@@ -78,7 +79,7 @@ export class PerfilComponent implements OnInit{
     })
   }
 
-  deslogar() {
+  logout() {
     this.userService.logout();
     this.router.navigate(['/login']);
   }
