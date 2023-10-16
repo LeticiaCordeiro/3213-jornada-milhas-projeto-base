@@ -23,7 +23,7 @@ export class UserService {
     this.userSubject.next(user);
   }
 
-  retornarUser() {
+  returnUserData() {
     return this.userSubject.asObservable();
   }
 
@@ -37,7 +37,7 @@ export class UserService {
     this.userSubject.next(null);
   }
 
-  estaLogado() {
+  verifyUserIsLogged() {
     return this.tokenService.userHasToken ();
   }
 }

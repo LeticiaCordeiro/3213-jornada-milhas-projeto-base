@@ -13,7 +13,7 @@ export class HeaderComponent {
     private userService: UserService,
     private router: Router) {}
 
-  user$ = this.userService.retornarUser();
+  user$ = this.userService.returnUserData();
 
   logout() {
     this.userService.logout();
