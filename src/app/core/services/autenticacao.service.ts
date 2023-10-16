@@ -21,7 +21,7 @@ export class AutenticacaoService {
 
   ) {}
 
-  autenticar(email: string, senha: string): Observable<HttpResponse<AuthResponse>> {
+  validateUserCredential(email: string, senha: string): Observable<HttpResponse<AuthResponse>> {
     return this.http.post<AuthResponse>(`${this.apiUrl}/auth/login`, {email, senha}, {observe:'response'}).pipe(
       tap((response) => {
         const authToken = response.body?.access_token || '';

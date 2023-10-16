@@ -28,7 +28,7 @@ export class LoginComponent {
     const email = this.loginForm.value.email;
     const senha = this.loginForm.value.senha;
 
-    this.authService.autenticar(email, senha).subscribe({
+    this.authService.validateUserCredential(email, senha).subscribe({
      next: (value) => {
       console.log('Logion relizado com sucesso', value),
       this.router.navigateByUrl('/')
